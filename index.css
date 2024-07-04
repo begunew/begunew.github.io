@@ -1,0 +1,92 @@
+.container-lg h2 {
+  font-weight: bold;
+  font-size: 32px;
+  color: white;
+}
+
+.container-lg p {
+  font-weight: 200;
+  color: white;
+}
+
+.container-nav {
+  height: 120px;
+}
+
+.container-top {
+  width: 60%;
+  margin-left: 138px;
+  padding-top: 50px;
+}
+
+.container-top p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.container-assessment-list {
+  height: 600px;
+  margin-top: 100px;
+}
+
+.container-why-us {
+  height: 600px;
+  background-color: var(--primary);
+}
+
+.ml-60 {
+  margin-left: 60px;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.container-assessment {
+  height: 300px;
+  margin-top: 140px;
+}
+
+.row-assessment {
+  height: 100%;
+  margin-right: 126px;
+  margin-left: 126px;
+}
+
+.row-assessment h2 {
+  font-weight: bold;
+  font-size: 24px;
+  width: 225px;
+}
+
+.row-assessment p {
+  font-size: 16px;
+  color: #888693;
+}
+
+.button-a {
+  border: 0;
+  height: 200px;
+  width: 180px;
+}
+
+.top-height {
+  height: 60px;
+}
+
+.spiritual-color {
+  color: #250f65;
+}
+
+.behavioral-color {
+  color: #080314;
+}
+
+.motivational-color {
+  color: #103f08;
+}
+
+.emotional-color {
+  color: #790906;
+}
+/* #080314 */
