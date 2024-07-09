@@ -90,26 +90,51 @@ html {
   padding-top: 35px;
 }
 
-.nopad {
-  padding: 0;
-}
-
-.footer {
-  height: 350px;
+footer {
   background-color: var(--bg);
+  padding: 0;
+  height: 500px;
 }
 
-.footer-height {
-  height: 280px;
+.ml-126 {
+  margin-left: 124px;
 }
 
-.footer-container {
-  margin-left: 126px;
-  margin-right: 126px;
-}
-
-.footer-container > .col-lg-3 h2 {
-  color: white;
+footer h2 {
   font-weight: bold;
   font-size: 24px;
+  color: white;
+}
+
+footer p,
+.white-link {
+  color: white;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.pt-100 {
+  padding-top: 100px;
+}
+
+.width-less {
+  width: 180px;
+  margin-top: 30px;
+}
+
+.width-more {
+  width: 400px;
+}
+
+.bottom-footer {
+  margin-top: 30px;
+  padding-top: 50px;
+  margin-left: 0;
+  margin-right: 0;
+  border-width: 1px;
+  border-color: rgba(90, 90, 90, 0.2);
+}
+
+.width-custom {
+  margin-left: 20px;
 }
