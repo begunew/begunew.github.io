@@ -15,7 +15,7 @@
 
 .container-top {
   width: 60%;
-  margin-left: 138px;
+  margin-left: 126px;
   padding-top: 50px;
 }
 
@@ -26,12 +26,12 @@
 
 .container-assessment-list {
   height: 600px;
-  margin-top: 100px;
+  background-color: white;
 }
 
 .container-why-us {
   height: 600px;
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 .ml-60 {
