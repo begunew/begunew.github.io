@@ -90,3 +90,15 @@
   color: #790906;
 }
 /* #080314 */
+
+.highlight {
+  background-color: var(--secondary);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 70px;
+}

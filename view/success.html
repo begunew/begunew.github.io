@@ -62,12 +62,16 @@
       </nav>
     </div>
 
-    <h1>Success!!!</h1>
+    <h1 id="success_result">Success!!! </h1>
   </body>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const data = params.get("value");
+
+    successField = document.getElementById("success_result");
+
+    successField.innerHTML = data;
 
     console.log(data); // Output: value1 value2
   </script>
