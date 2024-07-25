@@ -192,6 +192,10 @@ steps[0].className = "step:active";
 
 let total = {};
 
+let success = false;
+
+let data = {};
+
 // get button elements
 let buttons = [
   document.getElementById("btnNever"),
@@ -212,6 +216,8 @@ let add = (amount) => {
   // Get the last key
   const lastKey = keys[keys.length - 1];
 
+  progress();
+
   // Stop the page and redirect to SuccessPage
   if (currentStep == lastKey) {
     // calculate the total of the assessment of array total
@@ -222,12 +228,15 @@ let add = (amount) => {
         result += total[key];
       }
     }
-    const data = {
+    data = {
       value: result,
     };
 
-    const queryString = new URLSearchParams(data).toString();
-    window.location.assign(`success.html?${queryString}`);
+    let submitButton = document.getElementById("submit-button");
+
+    submitButton.disabled = false;
+
+    return;
   }
 
   // hide the previous one
@@ -246,6 +255,11 @@ let add = (amount) => {
   if (total[currentStep + 1] == null) {
     unhighlightButtons();
   }
+};
+
+let submit = (data) => {
+  const queryString = new URLSearchParams(data).toString();
+  window.location.assign(`success.html?${queryString}`);
 };
 
 // unhighlight buttons
@@ -301,6 +315,7 @@ let right = () => {
 
   if (total[currentStep + 1] == null) {
     unhighlightButtons();
+    return;
   }
 
   steps[currentStep - 1].className = "step";
@@ -314,4 +329,14 @@ let right = () => {
   // highlight future buttons
 
   highlightButtons();
+};
+
+let progress = () => {
+  // check history
+
+  let history = Object.keys(total).length;
+
+  // change the css of the progress bar based on the history of answers
+  let progressBar = document.getElementById("progress-bar");
+  progressBar.style = `width: ${history}%;`;
 };
