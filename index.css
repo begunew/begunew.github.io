@@ -92,16 +92,18 @@
 /* #080314 */
 
 .highlight {
-  background-color: var(--secondary);
+  background-color: var(--primary);
 }
 
 .question-field-container {
   border-radius: 15px;
+  width: 1000px;
 }
 
 .question-field {
   height: 400px;
   border-radius: 15px;
+  width: 1000px;
 }
 
 .full-height {
@@ -136,4 +138,24 @@
 .progressbar {
   background-color: var(--bg);
   border-color: var(--bg);
+}
+
+.card-title-width {
+  width: 1000px;
+}
+
+.behavioral-step {
+  display: none;
+}
+
+.behavioral-step:active {
+  display: block;
+}
+
+.deactivated-button {
+  display: none;
+}
+
+.deactivated-button:active {
+  display: block;
 }
