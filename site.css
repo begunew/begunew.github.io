@@ -20,6 +20,10 @@ html {
   background-color: var(--bg);
 }
 
+.bg-pm {
+  background-color: var(--primary);
+}
+
 .h3-bold {
   font-weight: bold;
   font-size: 24px;
@@ -137,4 +141,8 @@ footer p,
 
 .width-custom {
   margin-left: 20px;
+}
+
+.hidden {
+  display: none;
 }
