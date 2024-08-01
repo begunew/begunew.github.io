@@ -8,26 +8,35 @@
     <link rel="stylesheet" href="../site.css" asp-append-version="true" />
     <link rel="stylesheet" href="../btn.css" asp-append-version="true" />
     <link rel="stylesheet" href="../index.css" asp-append-version="true" />
-  
+
     <!-- @* Lato Font *@ -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
     <!-- @* Inter Font *@ -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- drag and drop library -->
+    <script src="../js/dragula.js"></script>
+    <link rel="stylesheet" href="../css/dragula.min.css" />
+    <script></script>
   </head>
-  <body>
+  <body onload="drag()">
     <!-- Navbar -->
     <div class="container-fluid container-nav bg-bg p-0">
       <nav class="navbar navbar-expand navbar-light">
         <a class="navbar-brand text-white" href="../index.html">
-          <h3 class="h3-bold">Faithful Insights</h2>
+          <h2 class="h3-bold">Faithful Insights</h2>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end align-items-stretch mr-138" id="navbarNavAltMarkup">
@@ -41,7 +50,49 @@
       </nav>
     </div>
 
-    <div class="container-fluid card text-white mt-5 ml-128 align-items-center justify-items-center question-field-container">
+    <section class="bg-light mt-5">
+      <div class="container-lg">
+        <div class="row justify-content-center">
+          <div class="row justify-content-center align-items-stretch">
+            <div class="col mt-3 justify-content-center align-items-center mx-3">
+              <ul class="list-group">
+                <!-- <h4 class="card-title" id="behavioral-button-field"></h4> -->
+                <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonOne">Strongly Agree</li>
+                <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonTwo">Agree</li>
+                <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonThree">Sometimes</li>
+                <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonFour">Disagree</li>
+              </ul>
+            </div>
+            <div class="col mt-3 ml-5 justify-content-evenly align-items-center mx-3">
+              <ul class="list-group" id="dragparent">
+                <!-- <li class="list-group-item p-3 list-group-behavioral" onclick="removeQuestion(this)" style="height: 3.5rem; width: 33rem;" id="transitionOne"></li>
+                <li class="list-group-item p-3 list-group-behavioral" onclick="removeQuestion(this)" style="height: 3.5rem; width: 33rem;" id="transitionTwo"></li>
+                <li class="list-group-item p-3 list-group-behavioral" onclick="removeQuestion(this)" style="height: 3.5rem; width: 33rem;" id="transitionThree"></li>
+                <li class="list-group-item p-3 list-group-behavioral" onclick="removeQuestion(this)" style="height: 3.5rem; width: 33rem;" id="transitionFour"></li> -->
+              </ul>
+            </div>
+          </div>
+
+          <div class="row mt-5 justify-content-end behavioral-buttons">
+            <button class="btn btn-primary mx-3" onclick="resetQuestions()">Reset</button>
+
+            <button class="btn btn-white text-dark mx-3" onclick="back()">Back</button>
+            <!-- <p class="text-dark text-center fw-normal" id="spiritual-progress"></p> -->
+
+            <button class="btn btn-secondary mx-3" onclick="showNextQuestions()" id="behavioral-next-button" disabled>Next</button>
+
+            <div class="row justify-content-end">
+              <button class="btn btn-warning bg-pm mt-3 text-white hidden" onclick="submit(data)" id="behavioral-submit-button">Submit</button>
+            </div>
+          </div>
+          <div class="mt-5"></div>
+          <div class="mt-5"></div>
+          <div class="mt-5"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <div class="container-fluid card text-white mt-5 ml-128 align-items-center justify-items-center question-field-container">
       <div class="row bg-bg card-body question-field">
 
         <div class="col-1">
@@ -51,8 +102,8 @@
             </span>
           </button>
         </div>
-        <!-- BUTTON FIELD -->
-        <div class="col-5">
+        
+          <div class="col-5">
           <h4 class="card-title" id="behavioral_question_field"><p>Behavioral Assessment</p></h4>
           <h4 class="card-title" id="behavioral-button-field">
           </h4>
@@ -62,7 +113,7 @@
             <button class="btn btn-secondary deactivated-button" id="behavioral-submit-button" onclick="submit()">Submit</button>
           </h4>
         </div>
-        <!-- TRANSITION FIELD -->
+  
         <div class="col-5">
           <h4 class="card-title" id="behavioral-transition-field"></h4>
         </div>
@@ -76,9 +127,9 @@
         </div>
 
       </div>
-    </div>
+    </div>  -->
+    <!-- Drag and drop library -->
+
+    <script src="../js/behavioralQuestions.js" type="text/javascript"></script>
   </body>
-  
-  <script src="../js/behavioralQuestions.js" type="text/javascript">
-  </script>
 </html>

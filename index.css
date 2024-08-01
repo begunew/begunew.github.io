@@ -159,3 +159,31 @@
 .deactivated-button:active {
   display: block;
 }
+
+.list-group-behavioral {
+  cursor: pointer;
+  user-select: none;
+  width: 40rem;
+  font-weight: 500;
+  height: 3.5rem;
+  width: 33rem;
+}
+
+.behavioral-buttons {
+  width: 50rem;
+}
+
+.behavioral-buttons > button {
+  width: 10rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .list-group-behavioral {
+    width: 25rem;
+  }
+}
+
+.disabled {
+  color: gray;
+  cursor: default;
+}
