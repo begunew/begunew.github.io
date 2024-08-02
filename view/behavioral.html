@@ -52,35 +52,32 @@
 
     <section class="bg-light mt-5">
       <div class="container-lg">
-        <div class="row justify-content-center">
-          <div class="row justify-content-center">
-            <div class="col mt-3 justify-content-center align-items-center mx-3">
-              <ul class="list-group">
-                <!-- <h4 class="card-title" id="behavioral-button-field"></h4> -->
-                <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonOne">Strongly Agree</li>
-                <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonTwo">Agree</li>
-                <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonThree">Sometimes</li>
-                <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonFour">Disagree</li>
-              </ul>
-            </div>
-            <div class="col mt-3 ml-5 justify-content-evenly align-items-center mx-3">
-              <ul class="list-group" id="dragparent"></ul>
-            </div>
+        <div class="row">
+          <div class="col">
+            <ul class="list-group justify-content-center align-items-center">
+              <!-- <h4 class="card-title" id="behavioral-button-field"></h4> -->
+              <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonOne">Strongly Agree</li>
+              <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonTwo">Agree</li>
+              <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonThree">Sometimes</li>
+              <li class="list-group-item p-3 list-group-behavioral" onclick="chooseQuestion(this)" id="buttonFour">Disagree</li>
+            </ul>
           </div>
+          <div class="col">
+            <ul class="list-group justify-content-center align-items-center" id="dragparent"></ul>
+          </div>
+        </div>
 
-          <div class="row mt-5 justify-content-end behavioral-buttons">
+        <div class="row">
+          <div class="row mt-5 justify-content-center behavioral-buttons">
             <!-- <button class="btn btn-primary mx-3" onclick="resetQuestions()">Reset</button> -->
 
             <button class="btn btn-white text-dark mx-3" onclick="back()">Back</button>
             <!-- <p class="text-dark text-center fw-normal" id="spiritual-progress"></p> -->
 
             <button class="btn btn-secondary mx-3" onclick="showNextQuestions()" id="behavioral-next-button" disabled>Next</button>
-
-            <div class="row justify-content-end">
-              <button class="btn btn-warning bg-pm mt-3 text-white hidden" onclick="submit(data)" id="behavioral-submit-button">Submit</button>
-            </div>
+            <button class="btn btn-warning bg-pm mt-3 text-white hidden" onclick="submit(data)" id="behavioral-submit-button">Submit</button>
           </div>
-          <div class="mt-5"></div>
+          <div class="row mt-5"></div>
           <div class="mt-5"></div>
           <div class="mt-5"></div>
         </div>
