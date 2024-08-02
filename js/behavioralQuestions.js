@@ -79,7 +79,7 @@ function chooseQuestion(choice) {
   // disable the specific button from being pressed again
   document.getElementById(choice.id).classList.add("disabled");
 
-  if (selectedQuestions[1] && selectedQuestions[1].length === 4) {
+  if (selectedQuestions[currentStep] && selectedQuestions[currentStep].length === 4) {
     nextButton.disabled = false;
   }
 }
@@ -90,15 +90,23 @@ function showNextQuestions() {
 
   // grab the LAST four orders of the selectedQuestions and save it that way.
 
-  if (selectedQuestions[currentStep] && selectedQuestions[currentStep].length === 4) {
-    nextButton.disabled = false;
-  }
-
   prepareForNextQuestion();
 
   currentStep += 1;
 
+  if (selectedQuestions[currentStep] && selectedQuestions[currentStep].length == 4) {
+    console.log(selectedQuestions[currentStep]);
+    console.log("begin", currentStep);
+    console.log("false");
+
+    nextButton.disabled = false;
+  } else {
+    console.log("true");
+    nextButton.disabled = true;
+  }
+
   displayQuestions(currentStep);
+  console.log("end", currentStep);
 
   // and if currentStep did successfuly go +1, then change innerHTML of the buttons to next Q.
 }
@@ -162,26 +170,27 @@ function prepareForNextQuestion() {
   count = 0;
 }
 
-function resetQuestions() {
-  // transitionButtons innerHTML =""
-  // enable the left side buttons
+// unnecessary due to having the X button to remove each question and drag and drop.
+// function resetQuestions() {
+//   // transitionButtons innerHTML =""
+//   // enable the left side buttons
 
-  document.querySelectorAll(".transitionButtons").forEach((button) => {
-    button.remove();
-  });
+//   document.querySelectorAll(".transitionButtons").forEach((button) => {
+//     button.remove();
+//   });
 
-  buttons.forEach((button) => {
-    button.classList.remove("disabled");
-  });
+//   buttons.forEach((button) => {
+//     button.classList.remove("disabled");
+//   });
 
-  count = 0;
+//   count = 0;
 
-  selectedQuestions[currentStep] = [];
+//   selectedQuestions[currentStep] = [];
 
-  if (!checkForNext()) {
-    nextButton.disabled = true;
-  }
-}
+//   if (!checkForNext()) {
+//     nextButton.disabled = true;
+//   }
+// }
 
 function checkForNext() {
   if (selectedQuestions[currentStep] && selectedQuestions[currentStep].length === 4) {
