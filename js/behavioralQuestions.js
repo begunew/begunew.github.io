@@ -25,61 +25,118 @@ const behavioralQuestions = {
   24: ["Respect for other's rights or perspective", "Compassionate, understanding", "Assertive, combative, aggressive", "Self-assured, confident, capable"],
 };
 
-let nextButton = document.getElementById("behavioral-next-button");
-let resetButton = document.getElementById("behavioral-reset-button");
-let submitButton = document.getElementById("behavioral-submit-button");
-let buttons = [document.getElementById("buttonOne"), document.getElementById("buttonTwo"), document.getElementById("buttonThree"), document.getElementById("buttonFour")];
-let transitionButtons = [document.getElementById("transitionOne"), document.getElementById("transitionTwo"), document.getElementById("transitionThree"), document.getElementById("transitionFour")];
-let dragField = document.getElementById("dragparent");
+const nextButton = document.getElementById("behavioral-next-button");
+const submitButton = document.getElementById("behavioral-submit-button");
+const buttons = [document.getElementById("buttonOne"), document.getElementById("buttonTwo"), document.getElementById("buttonThree"), document.getElementById("buttonFour")];
+const transitionButtons = [
+  document.getElementById("transitionButtonOne"),
+  document.getElementById("transitionButtonTwo"),
+  document.getElementById("transitionButtonThree"),
+  document.getElementById("transitionButtonFour"),
+];
+const dragField = document.getElementById("dragparent");
 
-function displayQuestions(step) {
+let currentStep = 1;
+let transitionSlot = [];
+let initialSlot = [];
+let selectedQuestions = {};
+let count = 0;
+
+function displayQuestions(step, reoccurring) {
   for (let i = 0; i < 4; i++) {
-    buttons[i].innerHTML = behavioralQuestions[step][i];
+    if (!reoccurring) {
+      initialSlot.push(behavioralQuestions[step][i]);
+    }
+
+    if (initialSlot[i]) {
+      buttons[i].className = "p-3 list-group-behavioral custom-border mt-4";
+      buttons[i].onclick = () => {
+        chooseQuestion(buttons[i]);
+      };
+    }
+
+    buttons[i].innerHTML = initialSlot[i];
+    buttons[i].className = "p-3 list-group-behavioral custom-border mt-4";
+
+    if (!initialSlot[i]) {
+      buttons[i].innerHTML = "";
+      buttons[i].className = "p-3 list-group-behavioral mt-4 custom-border-disabled";
+      buttons[i].onclick = () => {
+        return;
+      };
+    }
   }
 }
 
-function displayTransitionQuestions(text) {
-  // <li class="list-group-item p-3 list-group-behavioral" onclick="removeQuestion(this)" style="height: 3.5rem; width: 33rem;" id="transitionOne"></li>
+function displayTransitionQuestions(title) {
+  // transitionSlot.push(text);
 
-  let li = document.createElement("li");
-  li.className = "list-group-item p-3 list-group-behavioral transitionButtons";
-  li.onclick = () => {
-    removeQuestion(li);
-  };
-  li.innerHTML = text;
+  if (title) {
+    transitionSlot = transitionSlot.filter((item) => {
+      return item !== title;
+    });
+  }
 
-  dragField.appendChild(li);
+  for (let i = 0; i < 4; i++) {
+    if (transitionSlot[i]) {
+      transitionButtons[i].innerHTML = transitionSlot[i];
+      transitionButtons[i].className = "p-3 list-group-behavioral custom-border-transition mt-4";
+    }
+
+    if (!transitionSlot[i]) {
+      transitionButtons[i].innerHTML = "";
+      transitionButtons[i].className = "p-3 list-group-behavioral custom-border-transition mt-4";
+    }
+  }
+
+  // add
+  if (transitionSlot.length < 5) {
+    transitionSlot.forEach((text, index) => {
+      transitionButtons[index].innerHTML = text;
+      transitionButtons[index].classList.remove("custom-border-transition");
+      transitionButtons[index].classList.add("custom-border-transition-change");
+    });
+  }
+
+  // maybe we dont need this
 }
-
-let currentStep = 1;
 
 displayQuestions(currentStep);
 
-let selectedQuestions = {};
-
-let count = 0;
-
 function chooseQuestion(choice) {
-  if (selectedQuestions[currentStep] && selectedQuestions[currentStep].includes(choice.innerHTML)) {
-    return;
-  }
+  // remove left side
+  initialSlot = initialSlot.filter((item) => {
+    return item !== choice.innerHTML;
+  });
 
-  if (!selectedQuestions[currentStep]) {
-    selectedQuestions[currentStep] = [];
-  }
+  // go to right side
 
-  selectedQuestions[currentStep].push(choice.innerHTML);
+  transitionSlot.push(choice.innerHTML);
 
-  // change the innerHTML of the transition side
-  displayTransitionQuestions(selectedQuestions[currentStep][count]);
+  displayTransitionQuestions();
+  displayQuestions(currentStep, true);
 
-  // transitionButtons[count].innerHTML = selectedQuestions[currentStep][count];
-  count += 1;
+  // if (selectedQuestions[currentStep] && selectedQuestions[currentStep].includes(choice.innerHTML)) {
+  //   return;
+  // }
 
-  // disable the specific button from being pressed again
-  document.getElementById(choice.id).classList.add("disabled");
+  // if (!selectedQuestions[currentStep]) {
+  //   selectedQuestions[currentStep] = [];
+  // }
 
-  if (selectedQuestions[currentStep] && selectedQuestions[currentStep].length === 4) {
+  // selectedQuestions[currentStep].push(choice.innerHTML);
+  // initialSlot = initialSlot.filter((item) => {
+  //   return item !== choice.innerHTML;
+  // });
+
+  // displayQuestions(currentStep, true);
+
+  // // change the innerHTML of the transition side
+  // displayTransitionQuestions(selectedQuestions[currentStep][count]);
+
+  // count += 1;
+
+  if (transitionSlot && transitionSlot.length === 4) {
     nextButton.disabled = false;
   }
 }
@@ -95,35 +152,27 @@ function showNextQuestions() {
   currentStep += 1;
 
   if (selectedQuestions[currentStep] && selectedQuestions[currentStep].length == 4) {
-    console.log(selectedQuestions[currentStep]);
-    console.log("begin", currentStep);
-    console.log("false");
-
     nextButton.disabled = false;
   } else {
-    console.log("true");
     nextButton.disabled = true;
   }
 
   displayQuestions(currentStep);
-  console.log("end", currentStep);
 
   // and if currentStep did successfuly go +1, then change innerHTML of the buttons to next Q.
 }
 
 function removeQuestion(question) {
   if (question.innerHTML) {
-    buttons.forEach((button) => {
-      if (button.innerHTML == question.innerHTML) {
-        button.classList.remove("disabled");
+    // it should turn back to the left side
+    // remove the right side.
 
-        selectedQuestions[currentStep] = selectedQuestions[currentStep].filter((item) => item !== button.innerHTML);
+    initialSlot.push(question.innerHTML);
 
-        count -= 1;
-      }
-    });
-    question.remove();
+    displayQuestions(currentStep, true);
+    displayTransitionQuestions(question.innerHTML);
 
+    // always keep at end
     if (!checkForNext()) {
       nextButton.disabled = true;
     }
@@ -159,8 +208,9 @@ function submit() {
 
 // reset squad
 function prepareForNextQuestion() {
-  document.querySelectorAll(".transitionButtons").forEach((button) => {
-    button.remove();
+  document.querySelectorAll(".custom-border-transition-change").forEach((button) => {
+    button.innerHTML = "";
+    button.className = "p-3 list-group-behavioral custom-border-transition mt-4";
   });
 
   buttons.forEach((button) => {
@@ -168,6 +218,7 @@ function prepareForNextQuestion() {
   });
 
   count = 0;
+  transitionSlot = [];
 }
 
 // unnecessary due to having the X button to remove each question and drag and drop.

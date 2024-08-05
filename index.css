@@ -169,9 +169,6 @@
   width: 33rem;
 }
 
-.behavioral-buttons {
-}
-
 .behavioral-buttons > button {
   width: 10rem;
 }
@@ -186,3 +183,32 @@
   color: gray;
   cursor: default;
 }
+
+.custom-border {
+  /* border: 1px solid black; */
+  list-style-type: none;
+  border: solid 0.2rem var(--primary);
+  border-radius: 0.5rem;
+}
+
+.custom-border-disabled {
+  list-style-type: none;
+  border: dotted 0.2rem gray;
+  border-radius: 0.5rem;
+  cursor: default;
+}
+
+.custom-border-transition {
+  list-style-type: none;
+  border: dotted 0.2rem var(--primary);
+  border-radius: 0.5rem;
+  cursor: default;
+}
+
+.custom-border-transition-change {
+  list-style-type: none;
+  border: solid 0.2rem var(--primary);
+  border-radius: 0.5rem;
+}
+
+/* solid only when its active and dotted when unactive. */
