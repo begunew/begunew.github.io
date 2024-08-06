@@ -52,14 +52,14 @@
 
     <section class="bg-light mt-5">
       <div class="container-lg">
-        <div class="row">
+        <div class="row w-75 mx-auto">
           <div class="col">
             <ul class="list-group justify-content-center align-items-center">
               <!-- <h4 class="card-title" id="behavioral-button-field"></h4> -->
-              <li class="p-3 list-group-behavioral custom-border mt-4" onclick="chooseQuestion(this)" id="buttonOne">Strongly Agree</li>
-              <li class="p-3 list-group-behavioral custom-border mt-4" onclick="chooseQuestion(this)" id="buttonTwo">Agree</li>
-              <li class="p-3 list-group-behavioral custom-border mt-4" onclick="chooseQuestion(this)" id="buttonThree">Sometimes</li>
-              <li class="p-3 list-group-behavioral custom-border mt-4" onclick="chooseQuestion(this)" id="buttonFour">Disagree</li>
+              <li class="p-3 list-group-behavioral custom-border mt-4" onclick="chooseQuestion(this)" id="buttonOne"></li>
+              <li class="p-3 list-group-behavioral custom-border mt-4" onclick="chooseQuestion(this)" id="buttonTwo"></li>
+              <li class="p-3 list-group-behavioral custom-border mt-4" onclick="chooseQuestion(this)" id="buttonThree"></li>
+              <li class="p-3 list-group-behavioral custom-border mt-4" onclick="chooseQuestion(this)" id="buttonFour"></li>
             </ul>
           </div>
           <div class="col">
@@ -76,7 +76,7 @@
           <div class="row mt-5 justify-content-center behavioral-buttons">
             <!-- <button class="btn btn-primary mx-3" onclick="resetQuestions()">Reset</button> -->
 
-            <button class="btn btn-white text-dark mx-3" onclick="back()">Back</button>
+            <button class="btn btn-white text-dark mx-3" onclick="goBack()">Back</button>
             <!-- <p class="text-dark text-center fw-normal" id="spiritual-progress"></p> -->
 
             <button class="btn btn-primary mx-3" onclick="showNextQuestions()" id="behavioral-next-button" disabled>Next</button>
